@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('YYYY-MM-DD HH:MM');
+            $table->dateTime('datetime');
             $table->timestamps();
         });
     }
