@@ -21,13 +21,14 @@
                 </h3>
                 <p>
                     {{ $event->title }}
-                    日時
-                    {{ $event->place }}
-                    {{ $event->detail }}
+                    日時{{ $schedule->datetime }}
+                    場所{{ $event->place }}
+                    詳細{{ $event->detail }}
                 </p>
                 <h3>その他の新歓イベントはこちら！</h3>
                 <p>
-                    日時　{{ $event->title }}</p>    
+                    {{ $schedule->datetime }}　
+                    {{ $event->title }}</p>    
             </div>
         </div>
         <div class="footer">
