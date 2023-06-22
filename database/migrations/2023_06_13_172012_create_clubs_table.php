@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('passward', 50);
             $table->string('activity', 200);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

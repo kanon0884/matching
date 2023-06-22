@@ -15,7 +15,7 @@
             <h3><a href="/posts/create">新歓イベント登録</a></h3>
         </div>
         <div>
-            <h3>新歓イベント編集・削除</h3>
+            <h3><a href="/posts/events">新歓イベント編集・削除</h3>
         </div>
     </body>
 </html>
