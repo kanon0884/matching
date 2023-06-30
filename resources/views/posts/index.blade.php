@@ -7,17 +7,28 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        <h1>新歓イベント一覧</h1>
+        <div class='club'>
+            <h1>サークル情報確認</h1>
+            <p>サークル名：{{ $club->name }}</p>
+            <p>系統：{{ $club->genre->name }}</p>
+            <p>活動内容：{{ $club->activity }}</p>
+            <p>写真：{{ $club->image }}</p>
+                <a href="/club/{{ $club->id }}/edit">サークル情報の編集</a>
+        </div>
         <div class='events'>
+            <h2 class='create'>
+                <a href="/event/create">新歓イベントの登録へ</a>
+            </h2>
+            <h2 class='title'>新歓イベント一覧</h2>
             @foreach ($events as $event)
             <div class='event'>
                 <h2 class='title'>
-                    <a href='/posts/{{ $event->id }}/edit'>{{ $event->title }}</a>
+                    <a href="/club/{{ $club->id }}/{{ $event->id }}/edit">{{ $event->title }}</a>
                 </h2>
-                <p class='datetime'>{{ $schedule->datetime }}</p>
+                <p class='datetime'>{{ $event->schedule_id }}</p>
                 <p class='place'>{{ $event->place }}</p>
                 <p class='detail'>{{ $event->detail }}</p>
-                <form action="/posts/{{ $event->id }}" id="form_{{ $event->id }}" method="post">
+                <form action="/club/{{ $club->id }}" id="form_{{ $event->id }}" method="post">
                 @csrf
                 @method('DELETE')
                 <button type="button" onclick="deleteEvent({{ $event->id }})">delete</button> 

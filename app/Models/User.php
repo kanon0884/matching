@@ -12,9 +12,14 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     
-     public function category()
+     public function favorites()
     {
-    return $this->hasMany(User::class);
+    return $this->hasMany(Favorite::class);
+    }
+    
+     public function clubs()
+    {
+    return $this->belongsTo(Club::class);
     }
 
     /**

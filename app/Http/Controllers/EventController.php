@@ -5,42 +5,29 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Schedule;
+use App\Models\Club;
+use App\Models\Genre;
 use App\Http\Requests\EventRequest;
+use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    public function index(Event $event, Schedule $schedule)
+    
+    public function index(Event $event, Schedule $schedule, Club $club, Genre $genre)
     {
-        return view('events.index')->with(['events' => $event->getPaginateByLimit(), 'schedule' => $schedule]);
+        return view('events.index')->with(['events' => $event->getPaginateByLimit(), 'schedule' => $schedule, 'club' => $club, 'genre' =>$genre]);
     }
     
-    public function show(Event $event, Schedule $schedule) 
+    public function create(Schedule $schedule)
     {
-        return view('events.show')->with(['event' => $event, 'schedule' => $schedule]);
+        return view('posts.event_create')->with(['schedule' => $schedule->get()]);
     }
     
-    public function posts(Event $event)
+    public function store(EventRequest $request, Event $event, Club $club)
     {
-        return view('posts.posts')->with(['event' =>$event]);
-    }
-    
-    public function event_create(Event $event, Schedule $schedule)
-    {
-        return view('posts.event_create')->with(['event' => $event, 'schedule' => $schedule]);
-    }
-    
-    public function event_store(EventRequest $request, Event $event, Schedule $schedule)
-    {
-        //dd($request['event']);
-        $input_event = $request['event'];
-        $input_schedule = $request['schedule'];
-        $event->title = $input_event['title'];
-        $event->place = $input_event['place'];
-        $event->detail = $input_event['detail'];
-        $schedule->datetime = $input_schedule['datetime'];
-        $event->save();
-        $schedule->save();
-        return redirect('/events/'. $event->id);
+        $input = $request['event'];
+        $event->fill($input)->save();
+        return redirect('/club/{club}'. $club->id);
     }
     
     public function event_edit(Event $event, Schedule $schedule)
@@ -48,22 +35,11 @@ class EventController extends Controller
         return view('posts.event_edit')->with(['event' => $event, 'schedule' => $schedule]);
     }
     
-    public function event_update(EventRequest $request, Event $event, Schedule $schedule)
+    public function event_update(EventRequest $request, Event $event, Schedule $schedule, Club $club, Genre $genre)
     {
-        $input_event = $request['event'];
-        $input_schedule = $request['schedule'];
-        $event->title = $input_event['title'];
-        $event->place = $input_event['place'];
-        $event->detail = $input_event['detail'];
-        $schedule->datetime = $input_schedule['datetime'];
-        $event->save();
-        $schedule->save();
-        return redirect('/events/'. $event->id);
-    }
-    
-    public function club_index(Event $event, Schedule $schedule)
-    {
-         return view('posts.index')->with(['events' => $event->getPaginateByLimit(), 'schedule' => $schedule]);
+        $input = $request['event'];
+        $event->fill($input)->save();
+        return redirect('/club/{club}'. $club->id);
     }
     
     public function event_delete(Event $event)
@@ -71,4 +47,26 @@ class EventController extends Controller
         $event->delete();
         return redirect('/posts/events');
     }
+    
+    public function search(Genre $genre)
+    {
+        return view('events.search')->with(['genres' => $genre->get()]);
+    }
+    
+    public function results(Event $event, Schedule $schedule, Club $club, Genre $genre)
+    {
+        return view('events.results')->with(['events' => $event, 'event' => $event, 'schedule' => $schedule, 'club' => $club, 'genre' =>$genre]);
+    }
+    
+    public function show(Event $event, Schedule $schedule, Club $club, Genre $genre) 
+    {
+        //dd($event);
+        return view('events.show')->with(['event' => $event, 'schedule' => $schedule, 'club' => $club, 'genre' =>$genre]);
+    }
+    
+    public function favorites()
+    {
+        return view('events.favorites');
+    }
+    
 }

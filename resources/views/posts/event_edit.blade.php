@@ -11,7 +11,7 @@
             @method('PUT')
             <div class="title">
                 <h2>見出し</h2>
-                <input type="text" name="event[title]" placeholder="説明会" value="{{ $event->title }}"/>
+                <input type="text" name="event[title]" value="{{ $event->title }}"/>
                 <p class='title_error' style="color:red">{{ $errors->first('event.title') }}</p>
             </div>
             <div class="place">
@@ -26,8 +26,8 @@
             </div>
             <div class="detail">
                 <h2>内容</h2>
-                <textarea name="event[detail]" placeholder="部員がサークルの活動内容をお話しします！" value="{{ $event->detail }}"></textarea>
-                <p class='place_error' style="color:red">{{ $errors->first('event.place') }}</p>
+                <textarea name="event[detail]" value="{{ $event->detail }}"></textarea>
+                <p class='detail_error' style="color:red">{{ $errors->first('event.detail') }}</p>
             </div>
             
             <input type="submit" value="store"/>
