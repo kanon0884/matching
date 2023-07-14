@@ -9,9 +9,8 @@ class Club_schedules extends Model
 {
     use HasFactory;
     
-    public function category()
+    public function club()
     {
     return $this->belongsTo(Club::class);
-    return $this->belongsTo(Schedule::class);
     }
 }
