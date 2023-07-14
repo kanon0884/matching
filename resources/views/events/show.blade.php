@@ -22,7 +22,7 @@
         </h3>
         <p>
             {{ $event->title }}
-            日時：{{ $schedule->datetime }}
+            日時：{{ $event->schedule }}
             場所：{{ $event->place }}
             詳細：{{ $event->detail }}
         </p>
@@ -37,7 +37,7 @@
         <h3>その他の新歓イベントはこちら！</h3>
         <p>
             @foreach ($events as $event)
-            ・{{ $event->schedule->datetime }}　{{ $event->title }}
+            ・{{ $event->title }}
             @endforeach
         </p>
         </div>

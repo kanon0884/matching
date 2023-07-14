@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1>サークル情報登録</h1>
-        <form action="/club" method="POST">
+        <form action="/clubs" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="name">
                 <h2>サークル名</h2>
@@ -27,7 +27,10 @@
                 <input type="text" name="club[activity]" value="{{ old('club.activity') }}"/>
                 <p class='activity_error' style="color:red">{{ $errors->first('club.activity') }}</p>
             </div>
-            
+            <div class="image">
+                <h2>写真</h2>
+                <input type="file" name="image">
+            </div>
             <input type="submit" value="登録"/>
         </form>
         <div class="footer">

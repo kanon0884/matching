@@ -23,7 +23,8 @@ class ClubRequest extends FormRequest
         return [
             'club.name' => 'required|string|max:50',
             'club.activity' => 'required|string|max:200',
-            'club.image' =>'required',
+            'club.image_url' =>'required',
+            
         ];
     }
 }

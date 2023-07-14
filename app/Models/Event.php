@@ -16,10 +16,6 @@ class Event extends Model
     return $this->belongsTo(Club::class);
     }
     
-    public function schedule()
-    {
-    return $this->belongsTo(Schedule::class);
-    }
     
     public function users()
     {
@@ -34,7 +30,8 @@ class Event extends Model
     protected $fillable = [
         'title', 
         'place',
-        'schedule_id',
+        'schedule',
         'detail',
+        'club_id',
     ];
 }

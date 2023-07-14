@@ -33,7 +33,7 @@ class Club extends Model
         'name',
         'genre_id',
         'activity',
-        'image',
+        'image_url',
     ];
     
     function getPaginateByLimit(int $limit_count = 5)

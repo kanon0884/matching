@@ -17,9 +17,9 @@ class User extends Authenticatable
     return $this->hasMany(Favorite::class);
     }
     
-     public function clubs()
+    public function clubs()
     {
-    return $this->belongsTo(Club::class);
+        return $this->hasMany(Club::class);
     }
 
     /**

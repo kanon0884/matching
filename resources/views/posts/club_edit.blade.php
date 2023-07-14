@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -5,7 +6,7 @@
     </head>
     <body>
         <h1>サークル情報編集</h1>
-        <form action="/club" method="POST">
+        <form action="/club/{{ $club->id }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="content_name">
@@ -27,8 +28,8 @@
             </div>
             <div class="image">
                 <h2>写真</h2>
-                <input type="file" name="image" value="{{ $club->image }}"/>
-                <p class='image_error' style="color:red">{{ $errors->first('club.image') }}</p>
+                <input type="file" name="image" value="{{ $club->image_url }}">
+            </div>
             <input type="submit" value="編集完了"/>
         </form>
         <div class="footer">

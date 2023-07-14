@@ -21,8 +21,8 @@
             </div>
             <div class="datetime">
                 <h2>日時</h2>
-                <input type="text" name="schedule[datetime]" value="{{ $schedule->datetime }}"/>
-                <p class='datetime_error' style="color:red">{{ $errors->first('schedule.datetime') }}</p>
+                <input type="text" name="evevt[schedule]" value="{{ $event->schedule }}"/>
+                <p class='schedule_error' style="color:red">{{ $errors->first('event.schedule') }}</p>
             </div>
             <div class="detail">
                 <h2>内容</h2>

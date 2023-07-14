@@ -16,37 +16,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::controller(ProfileController::class)->group(function(){
+    Route::get('/clubs/{user}', 'show')->name('show');
+});
+
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::middleware('auth')->group(function () {
 
 Route::controller(ClubController::class)->group(function(){
     Route::get('/', 'first')->name('first');
     Route::get('/club/create', 'create')->name('create');
-    Route::post('/club', 'store')->name('store');
-    Route::get('/club/{club}', 'index')->name('index');
-    Route::put('/club/{club}', 'update')->name('update');
+    Route::post('/clubs', 'store')->name('store');
     Route::get('/club/{club}/edit', 'edit')->name('edit');
-    Route::delete('/club/{club}')->name('delete');
+    Route::put('/club/{club}', 'update')->name('update');
 });
 
 Route::controller(EventController::class)->group(function(){
-    Route::get('/event/create', 'create')->name('create');
-    Route::post('club', 'store')->name('store');
+    Route::get('/event/create/{club}', 'create')->name('create');
+    Route::post('/events/{club}', 'store')->name('store');
+    Route::get('/events/{club}/{event}/edit')->name('edit');
     Route::get('/events/search', 'search')->name('search');
     Route::get('/events/search/results', 'results')->name('results');
     Route::get('/events/{event}', 'show')->name('show');
     Route::get('/events/{user}/favorites', 'favorites')->name('favorites');
+    Route::delete('/events')->name('delete');
 });
-
-
-
-
-Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

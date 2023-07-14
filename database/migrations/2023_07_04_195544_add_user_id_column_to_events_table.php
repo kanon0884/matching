@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('clubs', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 50);
-            //$table->string('passward', 50);
-            $table->string('activity', 200);
-            $table->string('image_url');
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::table('events', function (Blueprint $table) {
+            $table->foreignId('user_id');
+            //
         });
     }
 
@@ -31,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clubs');
+        Schema::table('events', function (Blueprint $table) {
+            //
+        });
     }
 };

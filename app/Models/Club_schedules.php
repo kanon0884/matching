@@ -13,9 +13,4 @@ class Club_schedules extends Model
     {
     return $this->belongsTo(Club::class);
     }
-    
-    public function schedule()
-    {
-    return $this->belongsTo(Schedule::class);
-    }
 }
