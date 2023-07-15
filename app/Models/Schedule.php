@@ -9,10 +9,18 @@ class Schedule extends Model
 {
     use HasFactory;
     
-    public function category()
+    public function club_schedules()
     {
     return $this->hasMany(Club_schedule::class);
+    }
+    
+    public function events()
+    {
     return $this->hasMany(Event::class);
     }
+    
+    protected $fillable = [
+        'datetime',
+    ];
 
 }
