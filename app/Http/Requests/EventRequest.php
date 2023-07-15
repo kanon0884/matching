@@ -23,8 +23,8 @@ class EventRequest extends FormRequest
         return [
             'event.title' => 'required|string|max:50',
             'event.place' => 'required|string|max:50',
-            'schedule.datetime' => 'required|date',
-            'event.detail' => 'required|string|max:200'
+            'event.schedule' => 'required',
+            'event.detail' => 'required|string|max:200',
         ];
     }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 50);
             $table->string('place', 50);
+            $table->datetime('schedule');
             $table->string('detail', 200);
             $table->timestamps();
             $table->softDeletes();
