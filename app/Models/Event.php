@@ -11,14 +11,10 @@ class Event extends Model
     use HasFactory;
     use SoftDeletes;
     
-    public function club()
+    public function category()
     {
     return $this->belongsTo(Club::class);
-    }
-    
-    
-    public function users()
-    {
+    return $this->belongsTo(Schedule::class);
     return $this->hasMany(User::class);
     }
     
@@ -29,9 +25,7 @@ class Event extends Model
     
     protected $fillable = [
         'title', 
-        'place',
-        'schedule',
+        'place', 
         'detail',
-        'club_id',
     ];
 }
