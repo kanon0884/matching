@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('clubs', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
-            $table->string('passward', 50);
+            //$table->string('passward', 50);
             $table->string('activity', 200);
+            $table->string('image_url');
             $table->timestamps();
             $table->softDeletes();
         });
