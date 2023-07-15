@@ -46,11 +46,11 @@
                 </tr>
                 @endforeach
             @endif
-           {{-- @if(!empty($genres))
+                @if(!empty($genres))
                 @foreach($genres as $genre)
                 <tr>
                     @foreach($genre->clubs->events as $event)
-                        <td>{{ $club->name }}</td>
+                        {{--<td>{{ $club->name }}</td>
                         <td>{{ $event->title }}</td>
                         <td>{{ $event->schedule }}</td>
                         <td>{{ $event->place }}</td>
@@ -59,7 +59,7 @@
                 </tr>
                 @endforeach
                 <p>検索結果なし</p>
-            @endif--}}
+            @endif---}}
             
         </table>
 
