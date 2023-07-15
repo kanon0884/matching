@@ -9,13 +9,9 @@ class Favorite extends Model
 {
     use HasFactory;
     
-    public function event()
+    public function category()
     {
     return $this->belongsTo(Event::class);
-    }
-    
-    public function user()
-    {
-    return $this->belongsTo(User::class);
+    return $this->belongsTo(Users::class);
     }
 }

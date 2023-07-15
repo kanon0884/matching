@@ -9,7 +9,7 @@ class Genre extends Model
 {
     use HasFactory;
     
-    public function clubs()
+    public function category()
     {
     return $this->hasMany(Club::class);
     }
